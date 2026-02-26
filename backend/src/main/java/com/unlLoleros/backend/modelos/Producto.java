@@ -13,4 +13,7 @@ public class Producto {
     private double precioProducto;
     @Enumerated(EnumType.STRING)
     private Unidad unidad; 
+    @OneToOne 
+    @JoinColumn(name = "receta_id")
+    private Receta receta;
 }
