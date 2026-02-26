@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.unlLoleros.backend.modelos.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario,Integer>{
-    Optional<Usuario> findByEmail(String correo);
+    Optional<Usuario> findByEmail(String email);
     
 
-    boolean existsByEmail(String correo);
+    boolean existsByEmail(String email);
 
     
 }

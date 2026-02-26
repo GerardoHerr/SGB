@@ -24,7 +24,7 @@ public class Usuario {
 
     
     @Column(unique = true)
-    private String correo;
+    private String email;
     
     private String clave;
 
@@ -37,12 +37,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getCorreo(){
-        return this.correo;
+    public String getEmail(){
+        return this.email;
     }
 
-    public void setCorreo(String correo){
-        this.correo = correo;
+    public void setEmail(String email){
+        this.email = email;
     }
 
     public String getClave(){
