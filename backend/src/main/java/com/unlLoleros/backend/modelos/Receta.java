@@ -12,4 +12,30 @@ public class Receta {
     @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL)
     private List<NotaIngrediente> listaNotaIngredientes;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public List<NotaIngrediente> getListaNotaIngredientes() {
+        return listaNotaIngredientes;
+    }
+
+    public void setListaNotaIngredientes(List<NotaIngrediente> listaNotaIngredientes) {
+        this.listaNotaIngredientes = listaNotaIngredientes;
+    }
+
+    
+
 }
