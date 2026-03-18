@@ -1,5 +1,9 @@
-function saludar(){
-    console.log("hola");
+function Button({ texto }){
+    return(
+    <button>
+        { texto }
+    </button>
+    );
 }
 
-saludar();
+export default Button;
