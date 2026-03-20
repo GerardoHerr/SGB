@@ -2,6 +2,7 @@ package com.unlLoleros.backend.modelos;
 
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder.In;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "NotaIngrediente")
@@ -11,6 +12,7 @@ public class NotaIngrediente {
     private Integer id;
     private double cantidad; 
     
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "receta_id")
     private Receta receta; 

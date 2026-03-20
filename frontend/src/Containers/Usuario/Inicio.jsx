@@ -1,4 +1,3 @@
-import defaultLayout  from '../../Componentes/layout/default';
 
 function Inicio() {
     return (

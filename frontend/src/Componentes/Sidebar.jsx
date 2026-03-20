@@ -24,6 +24,15 @@ export default function Sidebar() {
                 </NavLink>
                 </li>
                 
+                <li className="nav-item">
+                <NavLink to="/Producto" className={linkclass}>
+                    <i className="bi bi-apple me-2"></i>
+                    Productos
+                </NavLink>
+                
+                </li>
+
+
             </ul>
                 
 

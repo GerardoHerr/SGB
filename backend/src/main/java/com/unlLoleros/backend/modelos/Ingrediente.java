@@ -13,6 +13,7 @@ public class Ingrediente {
     private double costo; 
     @Enumerated(EnumType.STRING)
     private Unidad unidad; 
+
     @OneToMany(mappedBy = "ingrediente", cascade = CascadeType.ALL)
     private List<NotaIngrediente> listaNotaIngredientes;
     
