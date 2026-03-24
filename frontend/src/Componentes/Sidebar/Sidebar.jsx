@@ -26,7 +26,7 @@ export default function Sidebar() {
                 
                 <li className="nav-item">
                 <NavLink to="/Producto" className={linkclass}>
-                    <i className="bi bi-apple me-2"></i>
+                    <i className="bi bi-windows me-2"></i>
                     Productos
                 </NavLink>
                 

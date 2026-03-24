@@ -12,7 +12,7 @@ import com.unlLoleros.backend.repositorio.ProductoRepository;
 
 
 @Service
-public class ProductoService {
+public class productoService {
     @Autowired
     private ProductoRepository productoRepository; 
 

@@ -1,6 +1,6 @@
 import './App.css'
 import  Inicio  from './Containers/Usuario/Inicio'
-import Sidebar from './Componentes/Sidebar'
+import Sidebar from './componentes/Sidebar/Sidebar'
 import {BrowserRouter, Route, Routes } from 'react-router-dom'
 import IngredientePage from './Containers/Ingrediente/IngredientePage'
 import Producto from './Containers/Producto/Producto'

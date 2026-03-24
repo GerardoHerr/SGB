@@ -1,34 +1,68 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../../componentes/Input";
-import MyButton from "../../componentes/MyButton";
-import { Divider } from '@mui/material';
+import MyButton from "../../componentes/MyButton/MyButton";
+import Select from "../../componentes/Select/Select";
 
-function FormIngrediente() {
+import { Box, Divider } from '@mui/material';
+import { getUnidadIngrediente, guardarIngredientes } from "../../service";
+
+function FormIngrediente({onClose, onSave}) {
 
   // 1. Estado
   const [nombre, setNombre] = useState("");
   const [descripcion,setDescripcion] = useState("");
   const [costo, setCosto] = useState("");
+  const [unidad, setUnidad]=useState("");
+  const [unidades, setUnidades]=useState([]);
 
 
-  // 2. Función guardar
-
-function guardar(){
-    const ingrediente ={
-        nombre: nombre,
-        descripcion: descripcion,
-        costo: costo,
+  // Cargar unidad de medida
+  useEffect(() => {
+    async function cargarUnidades() {
+      const data = await getUnidadIngrediente();
+      setUnidades(data);
     }
 
-}
+      cargarUnidades();
+    }, []);
+    // 2. Función guardar
+
+  async function guardar(){
+
+      const ingrediente ={
+          nombre,
+          descripcion,
+          costo,
+          unidad
+      }
+      console.log("Registrado ingrediente", ingrediente)
+      await guardarIngredientes(ingrediente);
+      onSave();
+      onClose();
+
+  }
 
   return (
 
     <div>
+      <div style={{
+          backgroundColor: '#2c3033',
+          padding: '16px',
+          borderRadius: '10px 10px',  // Solo esquinas superiores redondeadas
+          marginBottom: '16px'
+        }}>
+          <h3 style={{ 
+            color: 'white', 
+            margin: 0,
+            fontSize: '1.2rem'
+          }}>
+            Agregar Ingrediente
+        </h3>
+      </div>
 
-      <h3>Agregar Ingrediente</h3>
+              <Divider sx={{ my: 1 }} />
 
-      {/* INPUT NOMBRE */}
+
       <Input
         placeholder="Nombre"
         value={nombre}
@@ -41,7 +75,7 @@ function guardar(){
       <Input
         placeholder="Descripción"
         value={descripcion}
-        onChange={(e) => setCosto(e.target.value)}
+        onChange={(e) => setDescripcion(e.target.value)}
       />
         <Divider sx={{ my: 1 }} />
 
@@ -55,8 +89,18 @@ function guardar(){
       />
         <Divider sx={{ my: 1 }} />
 
+      {/* UNIDAD DE MEDIDA */}
+
+      <Select  
+        value={unidad} 
+        onChange={(e)=> setUnidad(e.target.value)}
+        options={unidades}
+        />
+          <Divider sx={{ my: 1 }} />
+
 
       {/* BOTÓN */}
+
       <MyButton onClick={guardar}>
         Guardar
       </MyButton>
@@ -67,6 +111,8 @@ function guardar(){
 
   );
 
-}
+
+  }
+
 
 export default FormIngrediente;
