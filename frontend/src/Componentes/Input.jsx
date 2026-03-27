@@ -14,7 +14,13 @@ const StyledInput = styled('input')(({ theme }) => ({
 function Input({ placeholder, value, onChange, name, type }) {
 
   return (
-    <StyledInput
+    <input
+      style={{ 
+        borderRadius: '20px',  // o '2rem', '999px'
+        padding: '5px 20px',
+        border: '2px solid black', 
+
+      }} 
       placeholder={placeholder}
       value={value}
       onChange={onChange}

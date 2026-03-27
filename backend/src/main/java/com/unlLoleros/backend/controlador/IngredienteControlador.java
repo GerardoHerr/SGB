@@ -1,7 +1,6 @@
 package com.unlLoleros.backend.controlador;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.unlLoleros.backend.modelos.Ingrediente;
+import com.unlLoleros.backend.modelos.Unidad;
 import com.unlLoleros.backend.services.IngredienteService;
 
 @RestController
@@ -28,4 +28,11 @@ public class IngredienteControlador {
     public List<Ingrediente> listar(){
         return ingredienteService.listar();
     }
+
+    @GetMapping("/unidad")
+    public Unidad[] getUnidad(){
+        return Unidad.values();
+    }
+
+    
 }
