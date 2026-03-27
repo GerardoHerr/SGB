@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 
 const StyledInput = styled('input')(({ theme }) => ({
-  width: 200,
+  width: "100%",
   backgroundColor: '#fff',
   color: '#000',
 
@@ -11,13 +11,15 @@ const StyledInput = styled('input')(({ theme }) => ({
   }),
 }));
 
-function Input({ placeholder, value, onChange }) {
+function Input({ placeholder, value, onChange, name, type }) {
 
   return (
     <StyledInput
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      name={name}
+      type={type}
     />
   );
 

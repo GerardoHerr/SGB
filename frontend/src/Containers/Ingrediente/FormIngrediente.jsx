@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Input from "../../componentes/Input";
-import MyButton from "../../componentes/MyButton";
+import Input from "../../Componentes/Input";
+import MyButton from "../../Componentes/MyButton";
 import { Divider } from '@mui/material';
 
 function FormIngrediente() {

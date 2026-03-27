@@ -1,7 +1,7 @@
 import FormIngrediente from "./FormIngrediente";
 import { useState } from "react";
 import { Modal, Box } from "@mui/material";
-import MyButton from "../../componentes/MyButton";
+import MyButton from "../../Componentes/MyButton";
 
 function IngredientePage(){
 

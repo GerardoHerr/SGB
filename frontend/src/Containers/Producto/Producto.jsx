@@ -2,25 +2,65 @@ import React from 'react';
 import  TablaProducto from '../../Componentes/TablaProducto';
 import { Box, colors, Paper, Typography } from '@mui/material';
 import { Divider } from '@mui/material';
-import ButtonAñadir from '../../Componentes/ButtonAñadir';
-import { getProductos } from '../../service';
+import MyButton from '../../Componentes/MyButton';
+import { getProductos, getRecetas } from '../../service';
 import { useEffect } from 'react';
+import ModalProducto from '../../Componentes/ModalProducto';
+import { Modal } from 'bootstrap';
+import { guardarProducto } from '../../service';
+
 
 function Producto() { 
     const [productos, setProductos] = React.useState([]);
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [recetas, setRecetas] = React.useState([]);
+    
+    const handleSave = async (form) => {
+        const NuevoProducto = {
+            nombre: form.nombre,   
+            precioProducto: Number(form.precio),
+            unidad: form.unidad ? form.unidad.toLowerCase() : null,
+            receta: form.receta ? { id: Number(form.receta) } : null
+        };
+
+        console.log('Nuevo Producto a guardar:', NuevoProducto);
+
+        try {
+            const savedProducto = await guardarProducto(NuevoProducto);
+            console.log('Producto guardado con éxito:', savedProducto);
+            setIsModalOpen(false);
+            const updatedProductos = await getProductos();
+            setProductos(transformarProducto(updatedProductos));
+        } catch (error) {
+            console.error('Error al guardar el producto:', error);
+        }
+    }
+
+    const transformarProducto = (productos) => {
+        return productos.map(producto => ({
+            nombre: producto.nombre,
+            precio: producto.precioProducto,
+            unidad: producto.unidad,
+            receta: producto.receta ?.id
+        }));
+    }
+
     
     useEffect(() => {
         getProductos().then(data => {
-            const datosRefomateados = data.map(producto => ({
-                nombre: producto.nombre,
-                precio: producto.precioProducto,
-                unidad: producto.unidad,
-                receta: producto.receta ?.id
-            }));
-            setProductos(datosRefomateados); 
+            setProductos(transformarProducto(data)); 
         }).catch(error => {
             console.error('ERROR EN API:', error);
         });
+    }, []);
+
+    useEffect(() => {
+        getRecetas().then(data => {
+            setRecetas(data);  
+        }).catch(error => {
+            console.error('ERROR EN API:', error);
+        }
+        );
     }, []);
 
     return (
@@ -43,7 +83,15 @@ function Producto() {
                             <TablaProducto rows={productos}/>
                             <Divider sx={{ my: 1 }} />
                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                                <ButtonAñadir />
+                                <MyButton children={"Agregar Producto"} 
+                                    onClick = {() => setIsModalOpen(true)}
+                                />
+                                <ModalProducto isOpen={isModalOpen} 
+                                    Onclose={() => setIsModalOpen(false)}
+                                    recetas = {recetas}
+                                    onSave = {handleSave}
+                                />  
+
                             </Box>
                     </Paper>
                

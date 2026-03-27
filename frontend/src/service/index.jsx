@@ -22,3 +22,15 @@ export const guardarProducto = async (producto) => {
     }
 }
 
+export const getRecetas = async () => {
+    try {
+        const response = await axiosInstance.get(rs.RECETAS);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching recetas:', error);
+        throw error;
+    }
+}
+
+
+

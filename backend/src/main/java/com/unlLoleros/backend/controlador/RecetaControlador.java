@@ -8,25 +8,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.unlLoleros.backend.modelos.Producto;
-import com.unlLoleros.backend.services.ProductoService;
+import com.unlLoleros.backend.modelos.Receta;
+import com.unlLoleros.backend.services.RecetaService;
 
-
-@RestController
-@RequestMapping("/api/productos")
-public class ProductoControlador {
+@RestController 
+@RequestMapping("/api/recetas")
+public class RecetaControlador {
     @Autowired
-    private ProductoService productoService;
-    
+    private RecetaService recetaService; 
+
     @PostMapping
-    public Producto guardar(@RequestBody Producto producto) {
-        return productoService.guardar(producto);
+    public Receta guardar(@RequestBody Receta receta) {
+        return recetaService.guardar(receta);
     }
 
     @GetMapping
-    public List<Producto> listar(){
-        return productoService.listar();
-    } 
-
+    public List<Receta> listar(){
+        return recetaService.listar();
+    }
     
 }
