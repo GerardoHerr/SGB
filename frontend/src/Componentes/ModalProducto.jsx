@@ -2,9 +2,9 @@ import { use, useState } from 'react';
 import { Modal, Box, Typography, TextField, FormControl } from '@mui/material';
 import { useEffect } from 'react';
 import { Divider } from '@mui/material';
-import MyButton from './MyButton';
 import Selecter from './Selecter';
 import Input from './Input';
+import MyButton from './MyButton/MyButton';
 
 function reformatearRecetas(recetas) {
     return recetas.map(receta => ({     

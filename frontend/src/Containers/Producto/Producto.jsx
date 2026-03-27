@@ -2,12 +2,12 @@ import React from 'react';
 import  TablaProducto from '../../Componentes/TablaProducto';
 import { Box, colors, Paper, Typography } from '@mui/material';
 import { Divider } from '@mui/material';
-import MyButton from '../../Componentes/MyButton';
 import { getProductos, getRecetas } from '../../service';
 import { useEffect } from 'react';
 import ModalProducto from '../../Componentes/ModalProducto';
 import { Modal } from 'bootstrap';
 import { guardarProducto } from '../../service';
+import MyButton from '../../Componentes/MyButton/MyButton';
 
 
 function Producto() { 
