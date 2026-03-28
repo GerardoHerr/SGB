@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Input from "../../Componentes/Input";
-import MyButton from "../../Componentes/MyButton/MyButton";
+import Input from "../../componentes/Input/Input";
+import MyButton from "../../componentes/MyButton/MyButton";
 import Select from "../../Componentes/Select/Select";
 
 

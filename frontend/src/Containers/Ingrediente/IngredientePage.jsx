@@ -3,10 +3,9 @@ import FormIngrediente from "./FormIngrediente";
 
 import { useEffect,useState} from "react";
 import { Box, colors, Paper, Typography, Modal, Divider } from '@mui/material';
-import MyButton from "../../Componentes/MyButton/MyButton";
+import MyButton from "../../componentes/MyButton/MyButton";
 import { getIngredientes, guardarIngredientes } from "../../service";
 import  TablaProducto from '../../Componentes/TablaProducto';
-import ButtonAñadir from '../../Componentes/ButtonAñadir';
 
 
 function IngredientePage(){
