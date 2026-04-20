@@ -23,13 +23,25 @@ export const guardarIngredientes = async (ingrediente) => {
     }
 }
 
+
+export const eliminarIngrediente = async (ingrediente) =>{
+    //const response = await api.get("/ingredientes/unidad");
+    try{
+        const response = await axiosInstance.delete(rs.INGREDIENTES, ingrediente);
+        return response.data;
+    }catch(error){
+        console.error('Error delete ingrediente:', error);
+        throw error;
+    }
+    
+}
+
 export const getUnidadIngrediente = async () =>{
     //const response = await api.get("/ingredientes/unidad");
     const response = await axiosInstance.get(rs.UNIDAD);
 
     return response.data;
 }
-
 
 //Servicios de Productos
 export const getProductos = async () => {

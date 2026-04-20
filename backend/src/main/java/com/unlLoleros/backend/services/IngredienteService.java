@@ -18,6 +18,14 @@ public class IngredienteService {
         return ingredienteRepository.save(ingrediente);
     }
 
+    
+    public void eliminar(Integer id){
+        if(id == null){
+            throw new IllegalArgumentException("El id del alimento no puede ser eliminado");
+        }
+        ingredienteRepository.deleteById(id);
+    }
+
     public List<Ingrediente> listar(){
         return ingredienteRepository.findAll();
     }
